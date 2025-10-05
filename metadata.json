@@ -1,0 +1,7 @@
+{
+  "name": "MotoCare Pro - Quản lý cửa hàng xe máy",
+  "description": "Một ứng dụng web toàn diện để quản lý các hoạt động của cửa hàng sửa chữa xe máy, bao gồm quản lý dịch vụ, theo dõi hàng tồn kho phụ tùng, quản lý khách hàng thân thiết và tích hợp trợ lý AI để chẩn đoán sự cố.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
