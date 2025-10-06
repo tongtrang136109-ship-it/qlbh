@@ -1,16 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MotoCare Pro</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
+      darkMode: 'class', // Enable class-based dark mode
       theme: {
         extend: {
           fontFamily: {
@@ -33,7 +33,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-gray-100">
+<body class="bg-slate-100 dark:bg-slate-900">
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

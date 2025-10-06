@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Part, Supplier, ReceiptItem, StoreSettings, InventoryTransaction } from '../types';
@@ -94,7 +95,7 @@ const PartModal: React.FC<{
         <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4">
             <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] flex flex-col">
                 <div className="p-4 border-b flex justify-between items-center">
-                    <h2 className="text-xl font-bold text-slate-800">Thêm sản phẩm mới</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-800">Thêm sản phẩm mới</h2>
                     <button onClick={onClose}><XMarkIcon className="w-6 h-6 text-slate-500" /></button>
                 </div>
                 <div className="p-6 space-y-4 overflow-y-auto">
@@ -227,7 +228,7 @@ const SupplierModal: React.FC<{
          <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4">
             <div className="bg-white rounded-lg shadow-xl w-full max-w-lg">
                 <div className="p-4 border-b flex justify-between items-center">
-                    <h2 className="text-xl font-bold text-slate-800">Thêm nhà cung cấp</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-800">Thêm nhà cung cấp</h2>
                     <button onClick={onClose}><XMarkIcon className="w-6 h-6 text-slate-500" /></button>
                 </div>
                  <div className="p-6 space-y-4">
@@ -433,7 +434,7 @@ const CreateGoodsReceipt: React.FC<CreateGoodsReceiptProps> = ({ parts, setParts
             {/* Left Panel: Product Selection */}
             <div className={`${mobileView === 'products' ? 'flex' : 'hidden'} lg:flex flex-col bg-white p-4 lg:p-6 rounded-lg shadow-sm border border-slate-200/60 h-full lg:flex-1`}>
                 <div className="flex justify-between items-center mb-4 flex-shrink-0">
-                    <h1 className="text-xl font-bold text-slate-800">Chọn sản phẩm nhập kho</h1>
+                    <h1 className="text-lg sm:text-xl font-bold text-slate-800">Chọn sản phẩm nhập kho</h1>
                      <div className="flex items-center space-x-3">
                         <button onClick={() => navigate('/inventory')} className="flex items-center bg-slate-200 text-slate-800 font-semibold py-2 px-3 rounded-lg shadow-sm hover:bg-slate-300">
                             <ArrowUturnLeftIcon className="w-5 h-5"/>

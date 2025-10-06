@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import type { WorkOrder, Part, User, StoreSettings, WorkOrderPart, Customer } from '../types';
 import { PlusIcon, PencilSquareIcon, TrashIcon, PrinterIcon, XMarkIcon } from './common/Icons';
@@ -43,7 +44,7 @@ const NewCustomerModal: React.FC<{
             <div className="bg-white rounded-lg shadow-xl w-full max-w-lg">
                 <form onSubmit={handleSubmit}>
                     <div className="p-6">
-                        <h2 className="text-2xl font-bold text-slate-800 mb-6">Thêm Khách hàng mới</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6">Thêm Khách hàng mới</h2>
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="new-customer-name" className="block text-sm font-medium text-slate-700">Tên khách hàng (*)</label>
@@ -227,7 +228,7 @@ const WorkOrderModal: React.FC<{
             <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl my-8">
                 <form onSubmit={handleSubmit}>
                     <div className="p-6">
-                        <h2 className="text-2xl font-bold text-slate-800 mb-6">{workOrder ? `Xử lý Phiếu Sửa chữa #${workOrder.id}` : 'Tạo Phiếu Sửa chữa mới'}</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6">{workOrder ? `Xử lý Phiếu Sửa chữa #${workOrder.id}` : 'Tạo Phiếu Sửa chữa mới'}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Customer & Vehicle Info */}
                             <div className="space-y-4 p-4 border border-slate-200 rounded-lg bg-slate-50/50">
@@ -417,11 +418,11 @@ const PrintInvoiceModal: React.FC<{
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4 print:hidden">
             <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl transform transition-all my-8 max-h-[90vh] flex flex-col">
                 <div className="p-6 border-b border-slate-200">
-                    <h2 className="text-2xl font-bold text-slate-800 text-center">HÓA ĐƠN DỊCH VỤ</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-slate-800 text-center">HÓA ĐƠN DỊCH VỤ</h2>
                 </div>
                 <div className="p-6 overflow-y-auto" id="invoice-print-area">
                     <div className="text-center mb-6">
-                        <h3 className="text-xl font-bold text-slate-900">{settings.name}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-900">{settings.name}</h3>
                         <p className="text-slate-700">{branchName} - {settings.address}</p>
                         <p className="text-slate-700">ĐT: {settings.phone}</p>
                     </div>
@@ -594,7 +595,7 @@ const ServiceManager: React.FC<ServiceManagerProps> = ({ currentUser, workOrders
                 settings={storeSettings}
             />
             <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold text-slate-800">Quản lý Dịch vụ</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">Quản lý Dịch vụ</h1>
                 <button onClick={() => handleOpenModal()} className="flex items-center bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg shadow-sm hover:bg-sky-700 transition-colors">
                     <PlusIcon />
                     <span className="ml-2 hidden sm:inline">Thêm Phiếu</span>
@@ -629,7 +630,7 @@ const ServiceManager: React.FC<ServiceManagerProps> = ({ currentUser, workOrders
                         <div className="mt-3 border-t border-slate-200 pt-3">
                             <p className="text-sm text-slate-800"><span className="font-medium">Xe:</span> {wo.vehicleModel} ({wo.licensePlate})</p>
                             <p className="text-sm text-slate-800"><span className="font-medium">Ngày:</span> {wo.creationDate}</p>
-                            <p className="text-md font-bold text-slate-900 mt-2 text-right">
+                            <p className="text-base font-bold text-slate-900 mt-2 text-right">
                                 {formatCurrency(wo.total)}
                             </p>
                         </div>

@@ -108,12 +108,12 @@ const AiAssistant: React.FC = () => {
     }
 
     return sections.map((section, index) => (
-        <details key={index} open className="mb-4 bg-white border border-slate-200 rounded-lg overflow-hidden last:mb-0">
-            <summary className="font-semibold text-slate-800 p-4 cursor-pointer hover:bg-slate-50 flex justify-between items-center">
+        <details key={index} open className="mb-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden last:mb-0">
+            <summary className="font-semibold text-slate-800 dark:text-slate-200 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 flex justify-between items-center">
                 {section.title}
                 <svg className="w-5 h-5 transition-transform transform details-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
             </summary>
-            <div className="p-4 border-t border-slate-200 prose prose-slate max-w-none">
+            <div className="p-4 border-t border-slate-200 dark:border-slate-700 prose prose-slate dark:prose-invert max-w-none">
                 <ul className="list-disc pl-5 space-y-1">
                     {section.content.map((item, idx) => (
                         <li key={idx}>{item.replace(/^\* /, '')}</li>
@@ -133,18 +133,18 @@ const AiAssistant: React.FC = () => {
         details[open] .details-arrow { transform: rotate(180deg); }
       `}</style>
       <div className="flex items-center">
-        <SparklesIcon className="w-8 h-8 text-sky-600"/>
-        <h1 className="text-3xl font-bold text-slate-800 ml-3">Trợ lý Chẩn đoán AI</h1>
+        <SparklesIcon className="w-8 h-8 text-sky-600 dark:text-sky-400"/>
+        <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 ml-3">Trợ lý Chẩn đoán AI</h1>
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200/60 space-y-4">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200/60 dark:border-slate-700 space-y-4">
         <div>
-            <label htmlFor="symptom-textarea" className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="symptom-textarea" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 1. Mô tả chi tiết các triệu chứng của xe <span className="text-red-500">*</span>
             </label>
             <textarea
               id="symptom-textarea"
-              className="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-900 transition-colors"
+              className="w-full p-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-900 dark:text-slate-200 bg-white dark:bg-slate-700 transition-colors"
               rows={4}
               value={symptom}
               onChange={(e) => setSymptom(e.target.value)}
@@ -153,7 +153,7 @@ const AiAssistant: React.FC = () => {
         </div>
         
         <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 2. Đính kèm hình ảnh (nếu có)
             </label>
             <div className="flex items-center gap-4">
@@ -164,16 +164,16 @@ const AiAssistant: React.FC = () => {
                     accept="image/*"
                     className="hidden"
                  />
-                 <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-2 bg-slate-100 text-slate-700 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 transition-colors">
+                 <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
                     <CloudArrowUpIcon className="w-5 h-5" /> Tải ảnh lên
                  </button>
-                 <button className="flex items-center gap-2 bg-slate-100 text-slate-700 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 transition-colors disabled:opacity-50" disabled>
+                 <button className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors disabled:opacity-50" disabled>
                     <CameraIcon className="w-5 h-5" /> Chụp ảnh
                  </button>
             </div>
              {image && (
                 <div className="mt-4 relative w-40 h-40">
-                    <img src={image.previewUrl} alt="Preview" className="w-full h-full object-cover rounded-lg border-2 border-slate-200" />
+                    <img src={image.previewUrl} alt="Preview" className="w-full h-full object-cover rounded-lg border-2 border-slate-200 dark:border-slate-600" />
                     <button onClick={() => setImage(null)} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow-md hover:bg-red-600">
                         <XMarkIcon className="w-4 h-4" />
                     </button>
@@ -181,7 +181,7 @@ const AiAssistant: React.FC = () => {
             )}
         </div>
         
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error && <p className="text-red-500 dark:text-red-400 text-sm">{error}</p>}
         
         <button
           onClick={handleDiagnose}
@@ -200,8 +200,8 @@ const AiAssistant: React.FC = () => {
       </div>
 
       {response && !isLoading && (
-        <div className="bg-slate-50 p-6 rounded-xl border border-slate-200/60">
-            <h2 className="text-2xl font-semibold text-slate-800 mb-4">Kết quả Chẩn đoán</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200/60 dark:border-slate-700">
+            <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-4">Kết quả Chẩn đoán</h2>
             <div>
                 {parseAndFormatResponse(response)}
             </div>

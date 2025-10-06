@@ -1,7 +1,8 @@
 import React, { useState, useId } from 'react';
 import { NavLink } from 'react-router-dom';
-import { DashboardIcon, WrenchScrewdriverIcon, ArchiveBoxIcon, UsersIcon, SparklesIcon, ShoppingCartIcon, UserGroupIcon, Cog6ToothIcon, ChartBarIcon, DocumentChartBarIcon, XMarkIcon, ArrowRightEndOnRectangleIcon, PlusIcon, TrashIcon, BuildingLibraryIcon } from './common/Icons';
+import { DashboardIcon, WrenchScrewdriverIcon, ArchiveBoxIcon, UsersIcon, SparklesIcon, ShoppingCartIcon, UserGroupIcon, Cog6ToothIcon, ChartBarIcon, DocumentChartBarIcon, XMarkIcon, ArrowRightEndOnRectangleIcon, PlusIcon, TrashIcon, BuildingLibraryIcon, SunIcon, MoonIcon, ComputerDesktopIcon } from './common/Icons';
 import type { User, StoreSettings, Department } from '../types';
+import type { Theme } from '../App';
 
 interface NavItemProps {
   to: string;
@@ -12,7 +13,7 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ to, icon, label, onClick }) => {
   const activeClass = 'bg-sky-600 text-white';
-  const inactiveClass = 'text-slate-300 hover:bg-sky-800 hover:text-white';
+  const inactiveClass = 'text-slate-300 hover:bg-sky-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-700';
 
   return (
     <NavLink
@@ -68,58 +69,58 @@ const StoreSettingsModal: React.FC<{
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl transform transition-all max-h-[90vh] flex flex-col">
-                 <div className="p-6 border-b border-slate-200">
-                    <h2 className="text-2xl font-bold text-slate-800">Cài đặt Cửa hàng</h2>
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-full max-w-2xl transform transition-all max-h-[90vh] flex flex-col">
+                 <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Cài đặt Cửa hàng</h2>
                 </div>
                 <div className="p-6 overflow-y-auto space-y-6">
                     <fieldset className="space-y-4">
-                        <legend className="text-lg font-semibold text-slate-700 border-b border-slate-200 pb-2 w-full">Thông tin chung</legend>
+                        <legend className="text-lg font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-600 pb-2 w-full">Thông tin chung</legend>
                         <div>
-                            <label htmlFor={`${formId}-name`} className="block text-sm font-medium text-slate-700">Tên cửa hàng</label>
-                            <input id={`${formId}-name`} type="text" name="name" value={localSettings.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-name`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Tên cửa hàng</label>
+                            <input id={`${formId}-name`} type="text" name="name" value={localSettings.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                          <div>
-                            <label htmlFor={`${formId}-address`} className="block text-sm font-medium text-slate-700">Địa chỉ</label>
-                            <input id={`${formId}-address`} type="text" name="address" value={localSettings.address} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-address`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Địa chỉ</label>
+                            <input id={`${formId}-address`} type="text" name="address" value={localSettings.address} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                         <div>
-                            <label htmlFor={`${formId}-phone`} className="block text-sm font-medium text-slate-700">Số điện thoại</label>
-                            <input id={`${formId}-phone`} type="text" name="phone" value={localSettings.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-phone`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Số điện thoại</label>
+                            <input id={`${formId}-phone`} type="text" name="phone" value={localSettings.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                     </fieldset>
                     
                     <fieldset className="space-y-4">
-                        <legend className="text-lg font-semibold text-slate-700 border-b border-slate-200 pb-2 w-full">Thông tin thanh toán</legend>
+                        <legend className="text-lg font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-600 pb-2 w-full">Thông tin thanh toán</legend>
                         <div>
-                            <label htmlFor={`${formId}-bankName`} className="block text-sm font-medium text-slate-700">Ngân hàng</label>
-                            <input id={`${formId}-bankName`} type="text" name="bankName" value={localSettings.bankName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-bankName`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Ngân hàng</label>
+                            <input id={`${formId}-bankName`} type="text" name="bankName" value={localSettings.bankName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                          <div>
-                            <label htmlFor={`${formId}-bankAccountNumber`} className="block text-sm font-medium text-slate-700">Số tài khoản</label>
-                            <input id={`${formId}-bankAccountNumber`} type="text" name="bankAccountNumber" value={localSettings.bankAccountNumber} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-bankAccountNumber`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Số tài khoản</label>
+                            <input id={`${formId}-bankAccountNumber`} type="text" name="bankAccountNumber" value={localSettings.bankAccountNumber} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                         <div>
-                            <label htmlFor={`${formId}-bankAccountHolder`} className="block text-sm font-medium text-slate-700">Chủ tài khoản</label>
-                            <input id={`${formId}-bankAccountHolder`} type="text" name="bankAccountHolder" value={localSettings.bankAccountHolder} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
+                            <label htmlFor={`${formId}-bankAccountHolder`} className="block text-sm font-medium text-slate-700 dark:text-slate-300">Chủ tài khoản</label>
+                            <input id={`${formId}-bankAccountHolder`} type="text" name="bankAccountHolder" value={localSettings.bankAccountHolder} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
                         </div>
                     </fieldset>
 
                     <fieldset className="space-y-3">
-                         <legend className="text-lg font-semibold text-slate-700 border-b border-slate-200 pb-2 w-full">Quản lý Chi nhánh</legend>
+                         <legend className="text-lg font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-600 pb-2 w-full">Quản lý Chi nhánh</legend>
                             {localSettings.branches.map((branch, index) => (
                                 <div key={branch.id} className="flex items-center space-x-2">
-                                    <input type="text" value={branch.name} onChange={(e) => handleBranchChange(index, e.target.value)} className="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900" />
-                                    <button type="button" onClick={() => handleRemoveBranch(index)} className="p-2 text-red-500 hover:bg-red-100 rounded-md"><TrashIcon className="w-5 h-5"/></button>
+                                    <input type="text" value={branch.name} onChange={(e) => handleBranchChange(index, e.target.value)} className="block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-slate-900 dark:text-slate-200" />
+                                    <button type="button" onClick={() => handleRemoveBranch(index)} className="p-2 text-red-500 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md"><TrashIcon className="w-5 h-5"/></button>
                                 </div>
                             ))}
-                         <button type="button" onClick={handleAddBranch} className="flex items-center text-sm text-sky-600 font-medium hover:text-sky-800">
+                         <button type="button" onClick={handleAddBranch} className="flex items-center text-sm text-sky-600 dark:text-sky-400 font-medium hover:text-sky-800 dark:hover:text-sky-300">
                             <PlusIcon className="w-4 h-4 mr-1"/> Thêm chi nhánh
                          </button>
                     </fieldset>
                 </div>
-                <div className="bg-slate-50 px-6 py-4 flex justify-end space-x-3 mt-auto border-t border-slate-200">
-                    <button type="button" onClick={onClose} className="bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 transition-colors">
+                <div className="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 flex justify-end space-x-3 mt-auto border-t border-slate-200 dark:border-slate-700">
+                    <button type="button" onClick={onClose} className="bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 transition-colors">
                         Hủy
                     </button>
                     <button type="button" onClick={handleSave} className="bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg shadow-sm hover:bg-sky-700 transition-colors">
@@ -127,6 +128,34 @@ const StoreSettingsModal: React.FC<{
                     </button>
                 </div>
             </div>
+        </div>
+    );
+};
+
+const ThemeSwitcher: React.FC<{ theme: Theme; setTheme: (theme: Theme) => void }> = ({ theme, setTheme }) => {
+    const themes: { name: Theme; icon: React.ReactNode }[] = [
+        { name: 'light', icon: <SunIcon className="w-5 h-5" /> },
+        { name: 'dark', icon: <MoonIcon className="w-5 h-5" /> },
+        { name: 'system', icon: <ComputerDesktopIcon className="w-5 h-5" /> },
+    ];
+
+    return (
+        <div className="flex items-center bg-slate-700/50 dark:bg-slate-900/50 p-1 rounded-lg">
+            {themes.map((t) => (
+                <button
+                    key={t.name}
+                    onClick={() => setTheme(t.name)}
+                    className={`flex-1 p-2 rounded-md flex justify-center items-center transition-colors text-sm capitalize ${
+                        theme === t.name
+                            ? 'bg-sky-600 text-white shadow'
+                            : 'text-slate-400 hover:bg-slate-700 hover:text-slate-200'
+                    }`}
+                    aria-label={`Switch to ${t.name} theme`}
+                    title={`Chế độ ${t.name === 'light' ? 'Sáng' : t.name === 'dark' ? 'Tối' : 'Hệ thống'}`}
+                >
+                    {t.icon}
+                </button>
+            ))}
         </div>
     );
 };
@@ -143,9 +172,11 @@ interface SidebarProps {
     onLogout: () => void;
     currentBranchId: string;
     setCurrentBranchId: (branchId: string) => void;
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setCurrentUser, storeSettings, setStoreSettings, isOpen, setIsOpen, onLogout, currentBranchId, setCurrentBranchId }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setCurrentUser, storeSettings, setStoreSettings, isOpen, setIsOpen, onLogout, currentBranchId, setCurrentBranchId, theme, setTheme }) => {
     const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
     const handleUserChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -214,7 +245,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setC
             onClose={() => setIsSettingsModalOpen(false)}
           />
       )}
-      <div className="flex items-center justify-between h-16 border-b border-slate-700 px-4">
+      <div className="flex items-center justify-between h-16 border-b border-slate-700 dark:border-slate-700/50 px-4">
         <button
           onClick={() => isAdmin && setIsSettingsModalOpen(true)}
           disabled={!isAdmin}
@@ -229,7 +260,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setC
         </button>
       </div>
 
-       <div className="px-4 py-4 border-b border-slate-700">
+       <div className="px-4 py-4 border-b border-slate-700 dark:border-slate-700/50">
             <label htmlFor="branch-switcher" className="block text-sm font-medium text-slate-400 mb-2">
                 Chi nhánh làm việc:
             </label>
@@ -253,8 +284,11 @@ const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setC
         ))}
       </nav>
 
-      <div className="mt-auto">
-        <div className="px-2 py-2 border-t border-slate-700">
+      <div className="mt-auto p-2 space-y-2">
+        <div className="px-2 py-2">
+            <ThemeSwitcher theme={theme} setTheme={setTheme} />
+        </div>
+        <div className="px-2 py-2 border-t border-slate-700 dark:border-slate-700/50">
             <button
                 onClick={onLogout}
                 className="flex items-center w-full px-4 py-3 my-1 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition-colors duration-200"
@@ -264,8 +298,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentUser, users, departments, setC
             </button>
         </div>
 
-        <div className="px-4 py-4 border-t border-slate-700">
-            <label htmlFor="user-switcher" className="block text-sm font-medium text-slate-400 mb-2">
+        <div className="px-2 pb-2 border-t border-slate-700 dark:border-slate-700/50">
+             <label htmlFor="user-switcher" className="block text-sm font-medium text-slate-400 mb-2 pt-4 px-2">
                 Chuyển đổi tài khoản:
             </label>
             <select 

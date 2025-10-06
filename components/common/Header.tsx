@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Bars3Icon } from './Icons';
@@ -27,12 +28,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
     const title = getTitleFromPath(location.pathname);
 
     return (
-        <header className="lg:hidden bg-white border-b border-slate-200 sticky top-0 z-20">
+        <header className="lg:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-20">
             <div className="flex items-center justify-between p-4 h-16">
-                <button onClick={onMenuClick} className="text-slate-600 hover:text-slate-900 p-2 -ml-2">
+                <button onClick={onMenuClick} className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white p-2 -ml-2">
                     <Bars3Icon className="h-6 w-6" />
                 </button>
-                <h1 className="text-lg font-semibold text-slate-800">{title}</h1>
+                <h1 className="text-lg font-semibold text-slate-800 dark:text-slate-100">{title}</h1>
                 <div className="w-6"></div> {/* Spacer to balance the title */}
             </div>
         </header>

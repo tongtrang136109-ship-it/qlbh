@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import type { Part, InventoryTransaction, StoreSettings } from '../types';
 import { ArchiveBoxIcon, ClockIcon, ExclamationTriangleIcon } from './common/Icons';
@@ -32,7 +33,7 @@ const StatCard: React.FC<{ icon: React.ReactElement<any>; title: string; value: 
         </div>
         <div className="ml-4">
             <p className="text-sm text-slate-500 font-medium">{title}</p>
-            <p className="text-2xl font-bold text-slate-800">{value}</p>
+            <p className="text-xl sm:text-2xl font-bold text-slate-800">{value}</p>
         </div>
     </div>
 );
@@ -167,7 +168,7 @@ const InventoryReport: React.FC<InventoryReportProps> = ({ parts, transactions, 
         <div className="space-y-6">
             <div className="flex items-center">
                 <ArchiveBoxIcon className="w-8 h-8 text-indigo-600" />
-                <h1 className="text-3xl font-bold text-slate-800 ml-3">Báo cáo Tồn kho</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 ml-3">Báo cáo Tồn kho</h1>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

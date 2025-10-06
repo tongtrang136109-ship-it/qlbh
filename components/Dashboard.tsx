@@ -17,14 +17,14 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ icon, title, value, color, linkTo }) => {
     const content = (
-         <div className="bg-white p-5 rounded-xl shadow-sm flex items-center h-full border border-slate-200/60">
+         <div className="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm flex items-center h-full border border-slate-200/60 dark:border-slate-700">
             <div className={`p-4 rounded-full ${color}`}>
                 {/* FIX: Remove type assertion as the prop type is now correct. */}
                 {React.cloneElement(icon, { className: 'w-7 h-7 text-white' })}
             </div>
             <div className="ml-4">
-                <p className="text-sm text-slate-500 font-medium">{title}</p>
-                <p className="text-2xl font-bold text-slate-800">{value}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{title}</p>
+                <p className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-200">{value}</p>
             </div>
         </div>
     );
@@ -82,7 +82,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workOrders, transactions, parts, 
   
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-slate-800">Bảng điều khiển</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100">Bảng điều khiển</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard 
@@ -114,15 +114,15 @@ const Dashboard: React.FC<DashboardProps> = ({ workOrders, transactions, parts, 
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200/60">
-            <h2 className="text-xl font-semibold text-slate-700 mb-4">Hoạt động gần đây</h2>
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200/60 dark:border-slate-700">
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-200 mb-4">Hoạt động gần đây</h2>
             <ul className="space-y-4">
                 {recentActivities.map(activity => (
                     <li key={activity.id} className="flex items-start space-x-4">
-                        <div className="flex-shrink-0 mt-1 bg-slate-100 p-2 rounded-full">{activity.icon}</div>
+                        <div className="flex-shrink-0 mt-1 bg-slate-100 dark:bg-slate-700 p-2 rounded-full">{activity.icon}</div>
                         <div>
-                            <p className="text-slate-800">{activity.text}</p>
-                            <p className="text-xs text-slate-400 mt-1 flex items-center">
+                            <p className="text-slate-800 dark:text-slate-200">{activity.text}</p>
+                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 flex items-center">
                                 <ClockIcon className="w-3 h-3 mr-1.5"/>
                                 {activity.time}
                             </p>
@@ -131,20 +131,20 @@ const Dashboard: React.FC<DashboardProps> = ({ workOrders, transactions, parts, 
                 ))}
             </ul>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200/60">
-            <h2 className="text-xl font-semibold text-slate-700 mb-4">Công việc cần chú ý</h2>
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200/60 dark:border-slate-700">
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-700 dark:text-slate-200 mb-4">Công việc cần chú ý</h2>
             <ul className="space-y-3">
-                <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    <span className="text-slate-700">Kiểm tra định kỳ xe SH của anh Long</span>
-                    <span className="text-sm font-medium text-red-500 bg-red-100 px-2.5 py-1 rounded-full">Sắp tới hạn</span>
+                <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <span className="text-slate-700 dark:text-slate-300">Kiểm tra định kỳ xe SH của anh Long</span>
+                    <span className="text-sm font-medium text-red-500 bg-red-100 dark:bg-red-900/50 dark:text-red-400 px-2.5 py-1 rounded-full">Sắp tới hạn</span>
                 </li>
-                <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    <span className="text-slate-700">Gọi điện xác nhận lịch hẹn với chị Mai</span>
-                    <span className="text-sm font-medium text-sky-600 bg-sky-100 px-2.5 py-1 rounded-full">Hôm nay</span>
+                <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <span className="text-slate-700 dark:text-slate-300">Gọi điện xác nhận lịch hẹn với chị Mai</span>
+                    <span className="text-sm font-medium text-sky-600 bg-sky-100 dark:bg-sky-900/50 dark:text-sky-400 px-2.5 py-1 rounded-full">Hôm nay</span>
                 </li>
-                 <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    <span className="text-slate-700">Đặt hàng dầu nhớt Motul</span>
-                    <span className="text-sm font-medium text-amber-600 bg-amber-100 px-2.5 py-1 rounded-full">Cần thực hiện</span>
+                 <li className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <span className="text-slate-700 dark:text-slate-300">Đặt hàng dầu nhớt Motul</span>
+                    <span className="text-sm font-medium text-amber-600 bg-amber-100 dark:bg-amber-900/50 dark:text-amber-400 px-2.5 py-1 rounded-full">Cần thực hiện</span>
                 </li>
             </ul>
         </div>

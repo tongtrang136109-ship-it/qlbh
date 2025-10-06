@@ -196,6 +196,7 @@ function useLocalStorageState<T>(key: string, defaultValue: T | (() => T)): [T, 
   return [state, setState];
 }
 
+export type Theme = 'light' | 'dark' | 'system';
 
 const App: React.FC = () => {
   const [workOrders, setWorkOrders] = useLocalStorageState<WorkOrder[]>('motocare_workOrders', mockWorkOrdersData);
@@ -208,7 +209,7 @@ const App: React.FC = () => {
   const [suppliers, setSuppliers] = useLocalStorageState<Supplier[]>('motocare_suppliers', mockSuppliersData);
   const [paymentSources, setPaymentSources] = useLocalStorageState<PaymentSource[]>('motocare_paymentSources', mockPaymentSourcesData);
   const [cashTransactions, setCashTransactions] = useLocalStorageState<CashTransaction[]>('motocare_cashTransactions', mockCashTransactionsData);
-
+  const [theme, setTheme] = useLocalStorageState<Theme>('motocare_theme', 'system');
   
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   
@@ -219,6 +220,25 @@ const App: React.FC = () => {
 
   const currentUser = users.find(u => u.id === currentUserId);
   
+  // Theme management effect
+    useEffect(() => {
+        const root = window.document.documentElement;
+        const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        root.classList.toggle('dark', isDark);
+
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleChange = () => {
+            if (theme === 'system') {
+                root.classList.toggle('dark', mediaQuery.matches);
+            }
+        };
+
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, [theme]);
+
+
   // Ensure currentBranchId is valid
   useEffect(() => {
     if (!storeSettings.branches.some(b => b.id === currentBranchId)) {
@@ -261,7 +281,7 @@ const App: React.FC = () => {
 
   return (
     <HashRouter>
-      <div className="flex h-screen bg-slate-50 font-sans print:hidden">
+      <div className="flex h-screen bg-slate-50 dark:bg-slate-900/70 font-sans print:hidden">
         <Sidebar 
           currentUser={currentUser} 
           users={users}
@@ -274,6 +294,8 @@ const App: React.FC = () => {
           onLogout={handleLogout}
           currentBranchId={currentBranchId}
           setCurrentBranchId={setCurrentBranchId}
+          theme={theme}
+          setTheme={setTheme}
         />
         {/* Overlay for mobile */}
         {isSidebarOpen && (
